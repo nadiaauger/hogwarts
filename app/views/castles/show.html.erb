@@ -1,0 +1,27 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @castle.img %>);">
+  <div class="container">
+    <h1>The <strong><%= @castle.name %></strong></h1>
+    <p>Join now</p>
+    <%# <a class="btn btn-flat" href="#">Search now</a> %>
+  </div>
+</div>
+<div class="container p-4 d-flex">
+  <%# Add the simple form to add a wizzard in this @castle %>
+  <%= simple_form_for([@castle, @wizzard]) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :img %>
+    <%= f.submit "Join", class:"btn btn-primary"%>
+  <% end %>
+</div>
+
+<div>
+  <h1>You're a wizzard harry, It's leviOsa, not levioSA!!!!</h1>
+  <ul>
+  <div class="cards">
+  <% @wizzards.each_with_index do |wizzard, index| %>
+    <%= link_to "Delete", wizzard_path(wizzard), data: {turbo_method: :delete} %>
+    <div class="card-category" style="background-image: url('<%= wizzard.img%>')">
+      <p><%= index %>. <%= wizzard.name %></p>
+    </div>
+  <% end %>
+</div>
